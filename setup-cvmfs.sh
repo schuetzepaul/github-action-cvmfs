@@ -4,11 +4,11 @@
 if [ "$(uname)" == "Linux" ]; then
   curl -L -o cvmfs-release-latest_all.deb ${CVMFS_UBUNTU_DEB_LOCATION}
   sudo dpkg -i cvmfs-release-latest_all.deb
-  sudo apt-get -q update --allow-unauthenticated
-  sudo apt-get -q -y install cvmfs
+  sudo apt-get -q update
+  sudo apt-get -q -y install cvmfs --allow-unauthenticated
   rm -f cvmfs-release-latest_all.deb
   if [ "${CVMFS_CONFIG_PACKAGE}" == "cvmfs-config-default" ]; then
-    sudo apt-get -q -y install cvmfs-config-default
+    sudo apt-get -q -y install cvmfs-config-default --allow-unauthenticated
   else
     curl -L -o cvmfs-config.deb ${CVMFS_CONFIG_PACKAGE}
     sudo dpkg -i cvmfs-config.deb
